@@ -1,3 +1,3 @@
-# alura cord
+# aluracord
 
-- Projeto inspirado na franquia de terror Scream. 
+- Projeto inspirado na franquia Scream. 
