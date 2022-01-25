@@ -1,3 +1,3 @@
 # aluracord
 
-- Projeto inspirado na franquia Scream. 
+- Projeto em desenvolvimento na imersão de react pela Alura. A sua inspiração é na franquia de filmes Scream. 
