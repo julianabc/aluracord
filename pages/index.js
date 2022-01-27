@@ -1,5 +1,7 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import appConfig from '../config.json';
+import React from 'react';
+import { useRouter } from 'next/router'; // necessario para criar rotas da pagina
 
 /* O que está abaixo foi feito apenas para fins de estudo. Deixar aqui:
 
@@ -24,36 +26,6 @@ function HomePage() {
 */
 
 
-// função global para o css in javasript necessário para a aplicação
-function GlobalStyle() {
-    return (
-      <style global jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          list-style: none;
-        }
-        body {
-          font-family: 'Open Sans', sans-serif;
-        }
-        /* App fit Height */ 
-        html, body, #__next {
-          min-height: 100vh;
-          display: flex;
-          flex: 1;
-        }
-        #__next {
-          flex: 1;
-        }
-        #__next > * {
-          flex: 1;
-        }
-        /* ./App fit Height */ 
-
-      `}</style>
-    );
-  }
 
   // pode trabalhar com partes diferentes em cada função, aqui o trabalho é no titulo
   function Titulo(props) { // recebe a frase entre titulo como parametro 
@@ -94,11 +66,13 @@ function GlobalStyle() {
 
   // função principal para ser renderizada na pagina
   export default function PaginaInicial() {
-    const username = 'julianabc'; // mudando para o meu github
+    // importante para deixar dinamico e por questão do estado dos campos 
+    const [username, setUsername] = React.useState('julianabc'); 
+    const roteamento = useRouter(); // criar roteamento
   
     return (
       <>
-        <GlobalStyle />
+        
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -126,6 +100,13 @@ function GlobalStyle() {
             {/* Formulário */}
             <Box
               as="form"
+              onSubmit = {function(infoEvent){
+                infoEvent.preventDefault(); // evitar que a pagina recarregue
+                console.log("Estamos indo para a pagina inicial");
+                roteamento.push('/chat'); // mostra a pagina que o form será enviado
+              }}
+
+
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -140,10 +121,21 @@ function GlobalStyle() {
               <SubTitle tag="h3"> What's your favorite scary movie?</SubTitle>
 
               </Text>
+
+
   
               <TextField
+                value={username}
+                onChange={function (event) { // sempre que houver uma mudança
+                  // Onde ta o valor?
+                  const valor = event.target.value;
+                  // Trocar o valor da variavel
+                  // através do React e avise quem precisa
+                  setUsername(valor);
+                }}
+              
                 fullWidth
-                placeholder='Digite o seu nome: '
+                placeholder='Digite o seu usuário: '
                 textFieldColors={{
                   neutral: {
                     textColor: appConfig.theme.colors.neutrals[200],
