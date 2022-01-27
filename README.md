@@ -1,3 +1,3 @@
-# alura cord
+# aluracord-scream
 
-- Projeto inspirado na franquia de terror Scream. 
+- Projeto em desenvolvimento na imersão de react pela Alura. A sua inspiração é na franquia de filmes Scream. 
