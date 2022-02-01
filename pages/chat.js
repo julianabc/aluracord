@@ -61,7 +61,7 @@ export default function ChatPage() {
     return () => {
       subscription.unsubscribe();
     }
-  }, []);
+  }, []); // o [] final é para quando quiser chamar a requisição. no momento, está vacio. pode ser quando mudar a listaDeMensagens por exemplo
 
 
 
