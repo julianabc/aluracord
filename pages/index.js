@@ -103,7 +103,7 @@ function HomePage() {
               onSubmit = {function(infoEvent){
                 infoEvent.preventDefault(); // evitar que a pagina recarregue
                 console.log("Estamos indo para a pagina inicial");
-                roteamento.push('/chat'); // mostra a pagina que o form será enviado
+                roteamento.push(`/chat?username=${username}`); // mostra a pagina que o form será enviado
               }}
 
 
